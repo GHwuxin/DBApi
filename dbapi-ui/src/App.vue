@@ -10,8 +10,8 @@ import Home from '@/views/Home.vue'
 export default {
   name: 'app',
   components: {
-    Home
-  }
+    Home,
+  },
 }
 </script>
 
@@ -26,19 +26,19 @@ export default {
 
 /* 去掉li 的小圆点 */
 li {
-  list-style: none
+  list-style: none;
 }
 
 a {
   color: #666;
-  text-decoration: none
+  text-decoration: none;
 }
 
 img {
   /* border 0 照顾低版本浏览器 如果 图片外面包含了链接会有边框的问题 */
   border: 0;
   /* 取消图片底侧有空白缝隙的问题 */
-  vertical-align: middle
+  vertical-align: middle;
 }
 
 #app {
@@ -49,7 +49,6 @@ img {
   /*justify-content: center;*/
   width: auto;
   margin: 0 auto;
-
 }
 
 i {
@@ -67,16 +66,16 @@ h4 {
 
 .el-button--primary.is-active,
 .el-button--primary:active {
-  background: #20B2AA;
-  border-color: #20B2AA;
+  background: #20b2aa;
+  border-color: #20b2aa;
   color: #fff;
 }
 
-.gap{
+.gap {
   margin: 0 10px 10px 0;
 }
-body{
-  background-color: #f3f3f321;
-  color:#606266;
+body {
+  background-color: #03182a;
+  color: #ffffff;
 }
 </style>

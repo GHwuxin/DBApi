@@ -1,41 +1,55 @@
 <template>
   <div>
-    <el-date-picker size="mini" v-model="time" type="datetimerange" :picker-options="pickerOptions" :range-separator="$t('m.to')" :start-placeholder="$t('m.startDate')"
-                    :end-placeholder="$t('m.endDate')" align="right">
+    <el-date-picker size="mini"
+                    v-model="time"
+                    type="datetimerange"
+                    :picker-options="pickerOptions"
+                    :range-separator="$t('m.to')"
+                    :start-placeholder="$t('m.startDate')"
+                    :end-placeholder="$t('m.endDate')"
+                    align="right">
     </el-date-picker>
-    <el-button size="mini" @click="query" type="primary">{{ $t('m.query') }}</el-button>
+    <el-button size="mini"
+               @click="query"
+               type="primary">{{ $t('m.query') }}</el-button>
     <div>
       <el-row :gutter="20">
 
         <el-col :span="12">
           <div class="box">
-            <v-chart :option="lineData" style="height: 300px"></v-chart>
+            <v-chart :option="lineData"
+                     style="height: 300px"></v-chart>
           </div>
 
         </el-col>
         <el-col :span="5">
           <div class="box">
-            <v-chart :option="pieData" style="height: 300px"></v-chart>
+            <v-chart :option="pieData"
+                     style="height: 300px"></v-chart>
           </div>
         </el-col>
         <el-col :span="7">
           <div class="box">
-            <v-chart :option="data3" style="height: 300px"></v-chart>
+            <v-chart :option="data3"
+                     style="height: 300px"></v-chart>
           </div>
         </el-col>
         <el-col :span="8">
           <div class="box">
-            <v-chart :option="data4" style="height: 300px"></v-chart>
+            <v-chart :option="data4"
+                     style="height: 300px"></v-chart>
           </div>
         </el-col>
         <el-col :span="8">
           <div class="box">
-            <v-chart :option="data5" style="height: 300px"></v-chart>
+            <v-chart :option="data5"
+                     style="height: 300px"></v-chart>
           </div>
         </el-col>
         <el-col :span="8">
           <div class="box">
-            <v-chart :option="data6" style="height: 300px"></v-chart>
+            <v-chart :option="data6"
+                     style="height: 300px"></v-chart>
           </div>
         </el-col>
       </el-row>
@@ -45,7 +59,7 @@
 
 <script>
 export default {
-  name: "monitor",
+  name: 'monitor',
   data() {
     return {
       pickerOptions: {
@@ -53,28 +67,28 @@ export default {
           {
             text: this.$t('m.lastWeek'),
             onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit("pick", [start, end]);
+              const end = new Date()
+              const start = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+              picker.$emit('pick', [start, end])
             },
           },
           {
             text: this.$t('m.lastMonth'),
             onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-              picker.$emit("pick", [start, end]);
+              const end = new Date()
+              const start = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+              picker.$emit('pick', [start, end])
             },
           },
           {
             text: this.$t('m.last3Month'),
             onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-              picker.$emit("pick", [start, end]);
+              const end = new Date()
+              const start = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
+              picker.$emit('pick', [start, end])
             },
           },
         ],
@@ -84,27 +98,32 @@ export default {
       pieData: {
         title: {
           text: this.$t('m.api_access_quantity'),
-          left: "center",
+          left: 'center',
+          textStyle: {
+            color: '#4de9ff',
+          },
         },
         tooltip: {
-          trigger: "item",
+          trigger: 'item',
         },
         legend: {
-          orient: "vertical",
-          left: "left",
+          orient: 'vertical',
+          left: 'left',
+          textStyle: {
+            color: '#ffffff',
+          },
         },
-        color: ["#99CC33", "#FF6600"],
+        color: ['#99CC33', '#FF6600'],
         series: [
           {
-
-            type: "pie",
-            radius: "50%",
+            type: 'pie',
+            radius: '50%',
             data: [],
             emphasis: {
               itemStyle: {
                 shadowBlur: 10,
                 shadowOffsetX: 0,
-                shadowColor: "rgba(0, 0, 0, 0.5)",
+                shadowColor: 'rgba(0, 0, 0, 0.5)',
               },
             },
           },
@@ -113,67 +132,73 @@ export default {
       lineData: {
         title: {
           text: this.$t('m.api_access_trend'),
-          left: "center",
+          left: 'center',
+          textStyle: {
+            color: '#4de9ff',
+          },
         },
-        color: ["#99CC66", "#FF6666"],
+        color: ['#99CC66', '#FF6666'],
         tooltip: {
-          trigger: "axis",
+          trigger: 'axis',
           axisPointer: {
-            type: "cross",
+            type: 'cross',
             label: {
-              backgroundColor: "#6a7985",
+              backgroundColor: '#6a7985',
             },
           },
         },
         legend: {
-          left: "left",
-          data: ["Success", "Failed"],
+          left: 'left',
+          data: ['Success', 'Failed'],
+          textStyle: {
+            color: '#ffffff',
+          },
         },
 
         grid: {
-          left: "3%",
-          right: "4%",
-          bottom: "3%",
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
           containLabel: true,
         },
         xAxis: [
           {
-            type: "category",
+            type: 'category',
             boundaryGap: false,
             data: [],
           },
         ],
         yAxis: [
           {
-            type: "value",
+            type: 'value',
           },
         ],
         series: [
           {
-            name: "Success",
-            type: "line",
-            stack: "Total",
+            name: 'Success',
+            type: 'line',
+            stack: 'Total',
             areaStyle: {
               opacity: 0.3,
-              color: "#99CC66",
+              color: '#99CC66',
             },
             emphasis: {
-              focus: "series",
+              focus: 'series',
             },
 
             data: [],
           },
 
           {
-            name: "Failed",
-            type: "line",
-            stack: "Total",
+            name: 'Failed',
+            type: 'line',
+            stack: 'Total',
             areaStyle: {
               opacity: 0.3,
-              color: "#FF6666",
+              color: '#FF6666',
             },
             emphasis: {
-              focus: "series",
+              focus: 'series',
             },
             data: [],
           },
@@ -182,34 +207,36 @@ export default {
       data3: {
         title: {
           text: this.$t('m.top_n_app'),
-          left: "center",
+          left: 'center',
+          textStyle: {
+            color: '#4de9ff',
+          },
         },
         color: ['#33CC99'],
         tooltip: {
-          trigger: "axis",
+          trigger: 'axis',
           axisPointer: {
-            type: "shadow",
+            type: 'shadow',
           },
         },
         legend: {},
         grid: {
-          left: "3%",
-          right: "4%",
-          bottom: "3%",
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
           containLabel: true,
         },
         xAxis: {
-          type: "value",
+          type: 'value',
           boundaryGap: [0, 0.01],
         },
         yAxis: {
-          type: "category",
+          type: 'category',
           data: [],
         },
         series: [
           {
-
-            type: "bar",
+            type: 'bar',
             data: [],
           },
         ],
@@ -217,34 +244,36 @@ export default {
       data4: {
         title: {
           text: this.$t('m.top_n_api'),
-          left: "center",
+          left: 'center',
+          textStyle: {
+            color: '#4de9ff',
+          },
         },
         color: ['#66CCCC'],
         tooltip: {
-          trigger: "axis",
+          trigger: 'axis',
           axisPointer: {
-            type: "shadow",
+            type: 'shadow',
           },
         },
         legend: {},
         grid: {
-          left: "3%",
-          right: "4%",
-          bottom: "3%",
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
           containLabel: true,
         },
         xAxis: {
-          type: "value",
+          type: 'value',
           boundaryGap: [0, 0.01],
         },
         yAxis: {
-          type: "category",
+          type: 'category',
           data: [],
         },
         series: [
           {
-
-            type: "bar",
+            type: 'bar',
             data: [],
           },
         ],
@@ -252,38 +281,40 @@ export default {
       data5: {
         title: {
           text: this.$t('m.top_n_duration'),
-          left: "center",
+          left: 'center',
+          textStyle: {
+            color: '#4de9ff',
+          },
         },
         color: ['#FF9900'],
         tooltip: {
-          trigger: "axis",
+          trigger: 'axis',
           axisPointer: {
-            type: "shadow",
+            type: 'shadow',
           },
           formatter: (params) => {
             debugger
-            return params[0].data + " (ms)"
-          }
+            return params[0].data + ' (ms)'
+          },
         },
         legend: {},
         grid: {
-          left: "3%",
-          right: "4%",
-          bottom: "3%",
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
           containLabel: true,
         },
         xAxis: {
-          type: "value",
+          type: 'value',
           boundaryGap: [0, 0.01],
         },
         yAxis: {
-          type: "category",
+          type: 'category',
           data: [],
         },
         series: [
           {
-
-            type: "bar",
+            type: 'bar',
             data: [],
           },
         ],
@@ -291,63 +322,63 @@ export default {
       data6: {
         title: {
           text: this.$t('m.top_n_ip'),
-          left: "center",
+          left: 'center',
+          textStyle: {
+            color: '#4de9ff',
+          },
         },
         color: ['#B39CD0'],
         tooltip: {
-          trigger: "axis",
+          trigger: 'axis',
           axisPointer: {
-            type: "shadow",
+            type: 'shadow',
           },
         },
         legend: {},
         grid: {
-          left: "3%",
-          right: "4%",
-          bottom: "3%",
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
           containLabel: true,
         },
         xAxis: {
-          type: "value",
+          type: 'value',
           boundaryGap: [0, 0.01],
         },
         yAxis: {
-          type: "category",
+          type: 'category',
           data: [],
         },
         series: [
           {
-
-            type: "bar",
+            type: 'bar',
             data: [],
           },
         ],
       },
-    };
+    }
   },
   watch: {
     '$i18n.locale'(newValue) {
-
       this.pieData.title.text = this.$t('m.api_access_quantity')
       this.lineData.title.text = this.$t('m.api_access_trend')
       this.data3.title.text = this.$t('m.top_n_app')
       this.data4.title.text = this.$t('m.top_n_api')
       this.data5.title.text = this.$t('m.top_n_duration')
       this.data6.title.text = this.$t('m.top_n_ip')
-    }
+    },
   },
   methods: {
     query() {
-
       this.axios
-        .post("/access/countByDay", {
+        .post('/access/countByDay', {
           start: parseInt(this.$moment(this.time[0]).valueOf() / 1000),
-          end: parseInt(this.$moment(this.time[1]).valueOf() / 1000)
+          end: parseInt(this.$moment(this.time[1]).valueOf() / 1000),
         })
         .then((response) => {
-          this.lineData.xAxis[0].data = response.data.map(t => t.date)
-          this.lineData.series[0].data = response.data.map(t => t.successNum)
-          this.lineData.series[1].data = response.data.map(t => t.failNum)
+          this.lineData.xAxis[0].data = response.data.map((t) => t.date)
+          this.lineData.series[0].data = response.data.map((t) => t.successNum)
+          this.lineData.series[1].data = response.data.map((t) => t.failNum)
 
           console.log(this.lineData.xAxis[0].data)
           console.log(this.lineData.series[0].data)
@@ -355,64 +386,70 @@ export default {
         })
 
       this.axios
-        .post("/access/successRatio", {
+        .post('/access/successRatio', {
           start: parseInt(this.$moment(this.time[0]).valueOf() / 1000),
-          end: parseInt(this.$moment(this.time[1]).valueOf() / 1000)
+          end: parseInt(this.$moment(this.time[1]).valueOf() / 1000),
         })
         .then((response) => {
-          this.pieData.series[0].data = [{name: "Success", value: response.data.successNum}, {
-            name: "Fail",
-            value: response.data.failNum
-          }]
+          this.pieData.series[0].data = [
+            { name: 'Success', value: response.data.successNum },
+            {
+              name: 'Fail',
+              value: response.data.failNum,
+            },
+          ]
         })
       this.axios
-        .post("/access/top5api", {
+        .post('/access/top5api', {
           start: parseInt(this.$moment(this.time[0]).valueOf() / 1000),
-          end: parseInt(this.$moment(this.time[1]).valueOf() / 1000)
+          end: parseInt(this.$moment(this.time[1]).valueOf() / 1000),
         })
         .then((response) => {
-          this.data4.yAxis.data = response.data.map(t => t.url).reverse()
-          this.data4.series[0].data = response.data.map(t => t.num).reverse()
-        });
+          this.data4.yAxis.data = response.data.map((t) => t.url).reverse()
+          this.data4.series[0].data = response.data.map((t) => t.num).reverse()
+        })
       this.axios
-        .post("/access/topNIP", {
+        .post('/access/topNIP', {
           start: parseInt(this.$moment(this.time[0]).valueOf() / 1000),
-          end: parseInt(this.$moment(this.time[1]).valueOf() / 1000)
+          end: parseInt(this.$moment(this.time[1]).valueOf() / 1000),
         })
         .then((response) => {
-          this.data6.yAxis.data = response.data.map(t => t.ip).reverse()
-          this.data6.series[0].data = response.data.map(t => t.num).reverse()
-        });
+          this.data6.yAxis.data = response.data.map((t) => t.ip).reverse()
+          this.data6.series[0].data = response.data.map((t) => t.num).reverse()
+        })
       this.axios
-        .post("/access/top5client", {
+        .post('/access/top5client', {
           start: parseInt(this.$moment(this.time[0]).valueOf() / 1000),
-          end: parseInt(this.$moment(this.time[1]).valueOf() / 1000)
+          end: parseInt(this.$moment(this.time[1]).valueOf() / 1000),
         })
         .then((response) => {
-          this.data3.yAxis.data = response.data.map(t => t.client_id).reverse()
-          this.data3.series[0].data = response.data.map(t => t.num).reverse()
-        });
+          this.data3.yAxis.data = response.data
+            .map((t) => t.client_id)
+            .reverse()
+          this.data3.series[0].data = response.data.map((t) => t.num).reverse()
+        })
 
       this.axios
-        .post("/access/top5duration", {
+        .post('/access/top5duration', {
           start: parseInt(this.$moment(this.time[0]).valueOf() / 1000),
-          end: parseInt(this.$moment(this.time[1]).valueOf() / 1000)
+          end: parseInt(this.$moment(this.time[1]).valueOf() / 1000),
         })
         .then((response) => {
-          this.data5.yAxis.data = response.data.map(t => t.url).reverse()
-          this.data5.series[0].data = response.data.map(t => t.duration).reverse()
-        });
+          this.data5.yAxis.data = response.data.map((t) => t.url).reverse()
+          this.data5.series[0].data = response.data
+            .map((t) => t.duration)
+            .reverse()
+        })
     },
-
   },
   created() {
-    const now = new Date();
-    this.time[1] = now;
-    this.time[0] = this.$moment(now).subtract(7, "days");
+    const now = new Date()
+    this.time[1] = now
+    this.time[0] = this.$moment(now).subtract(7, 'days')
 
-    this.query();
+    this.query()
   },
-};
+}
 </script>
 
 <style scoped lang="less">
